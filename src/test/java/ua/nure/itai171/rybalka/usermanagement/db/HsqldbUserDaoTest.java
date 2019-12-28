@@ -4,7 +4,6 @@ import java.util.Calendar;
 import java.util.Collection;
 
 import main.java.ua.nure.itai171.rybalka.usermanagement.db.ConnectionFactory;
-import main.java.ua.nure.itai171.chmutov.usermanagement.db.HsqldbUserDao;
 import org.dbunit.DatabaseTestCase;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;

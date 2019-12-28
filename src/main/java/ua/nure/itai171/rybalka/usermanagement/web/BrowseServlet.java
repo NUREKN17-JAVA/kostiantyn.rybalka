@@ -24,10 +24,10 @@ public class BrowseServlet extends HttpServlet {
             add(req, resp);
         } else if (Objects.nonNull(req.getParameter("editButton"))) {
             edit(req, resp);
+
         } else if (Objects.nonNull(req.getParameter("deleteButton"))) {
             delete(req, resp);
-        } else if (Objects.nonNull(req.getParameter("detailsButton"))) {
-            details(req, resp);
+        }
         } else {
             browse(req, resp);
         }
@@ -42,11 +42,6 @@ public class BrowseServlet extends HttpServlet {
             throw new ServletException(e);
         }
     }
-
-    private void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        req.getRequestDispatcher(ADD_JSP).forward(req, resp);
-    }
-
     private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         String idString = req.getParameter("id");
         if (Objects.isNull(idString)) {
@@ -59,6 +54,13 @@ public class BrowseServlet extends HttpServlet {
             return;
         }
         req.getRequestDispatcher(BROWSE_JSP).forward(req, resp);
+    }
+    private void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        req.getRequestDispatcher(ADD_JSP).forward(req, resp);
+    }
+
+    private void details(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        req.getRequestDispatcher(DETAILS_JSP).forward(req, resp);
     }
 
     private void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -79,7 +81,5 @@ public class BrowseServlet extends HttpServlet {
         resp.sendRedirect(EDIT_JSP);
     }
 
-    private void details(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        req.getRequestDispatcher(DETAILS_JSP).forward(req, resp);
-    }
+
 }

@@ -38,6 +38,9 @@ public class EditServlet extends HttpServlet {
             throw new ServletException(e.getMessage());
         }
     }
+    private void doCancel(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
+        resp.sendRedirect("browse");
+    }
 
     private void doOk(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
         try {
@@ -53,9 +56,7 @@ public class EditServlet extends HttpServlet {
         }
     }
 
-    private void doCancel(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
-        resp.sendRedirect("browse");
-    }
+
 
     protected void processUser(User userToProcess) throws DatabaseException {
         DaoFactory.getInstance().getUserDao().update(userToProcess);
